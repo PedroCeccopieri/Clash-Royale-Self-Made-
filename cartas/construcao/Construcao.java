@@ -8,6 +8,14 @@ public abstract class Construcao extends Carta {
     protected double velAtq;
 
     public void printStatus() {
-        System.out.format("vida: %d, dano: %d, alcance: %d, velAtq: %.1f, custo: %d", this.vida, this.dano, this. alcance, this.velAtq, this.custo);
+        System.out.format("vida: %d, dano: %d, alcance: %d, velAtq: %.1f, custo: %d\n", this.vida, this.dano, this. alcance, this.velAtq, this.custo);
+    }
+
+    public void atacar() {
+
+    }
+
+    public void mirar() {
+        
     }
 }
