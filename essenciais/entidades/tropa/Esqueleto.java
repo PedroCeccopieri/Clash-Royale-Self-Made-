@@ -1,11 +1,15 @@
-package essenciais.cartas.tropa;
+package essenciais.entidades.tropa;
+
+import frame.Mapa;
 
 import javax.swing.ImageIcon;
 
+import javax.swing.Timer;
+
 public class Esqueleto extends Tropa {
 
-    public Esqueleto (int x, int y) {
-        super(x,y);
+    public Esqueleto (int x, int y, Timer t, Mapa m) {
+        super(x, y, t, m);
 
         this.custo = 1;
         this.vida = 32;

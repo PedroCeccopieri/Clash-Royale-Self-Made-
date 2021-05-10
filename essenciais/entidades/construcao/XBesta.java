@@ -1,11 +1,15 @@
-package essenciais.cartas.construcao;
+package essenciais.entidades.construcao;
+
+import frame.Mapa;
 
 import javax.swing.*;
 
+import javax.swing.Timer;
+
 public class XBesta extends Construcao {
 
-    public XBesta(int x, int y) {
-        super(x,y);
+    public XBesta(int x, int y, Timer t, Mapa m) {
+        super(x, y, t, m);
         this.custo = 6;
         this.vida = 1000;
         this.dano = 25;

@@ -1,11 +1,15 @@
-package essenciais.cartas.tropa;
+package essenciais.entidades.tropa;
+
+import frame.Mapa;
 
 import javax.swing.ImageIcon;
 
+import javax.swing.Timer;
+
 public class Gigante extends Tropa {
 
-    public Gigante (int x, int y) {
-        super(x,y);
+    public Gigante (int x, int y, Timer t, Mapa m) {
+        super(x, y, t, m);
 
         this.custo = 5;
         this.vida = 1800;

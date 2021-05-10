@@ -5,8 +5,14 @@ import javax.swing.*;
 
 public class Torre extends Ambiente {
 
+    public int ladoDeSpawn;
+
     public Torre(int x, int y) {
         super(x,y);
+
+        if (this.y > 7) ladoDeSpawn = -1;
+        if (this.y < 7) ladoDeSpawn = 1;
+
         this.sprite = new ImageIcon("./sprites/ambiente/torre.png").getImage();
     }
 

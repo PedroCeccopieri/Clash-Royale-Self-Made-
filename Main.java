@@ -1,23 +1,36 @@
+import frame.*;
+import essenciais.*;
 
+import essenciais.ambiente.*;
+
+import essenciais.cartas.tropa.*;
 import essenciais.cartas.construcao.*;
 import essenciais.cartas.feitico.*;
-import essenciais.cartas.tropa.*;
+
+import essenciais.entidades.tropa.*;
+import essenciais.entidades.construcao.*;
+import essenciais.entidades.feitico.*;
+
+import javax.swing.Timer;
 
 public class Main {
     
     public static void main(String[] args) {
+
+        Timer timer = new Timer(1000, null);
+        timer.start();
         
-        Mapa mapa = new Mapa();
+        EventHandler evt = new EventHandler(timer);
 
-        new Frame(mapa);
+        Mapa mapa;
+        Mao mao;
 
-        mapa.addCarta(new XBesta(1,5));
-        mapa.addCarta(new BolaDeFogo(3,5));
-        mapa.addCarta(new Arqueira(5,5));
-        mapa.addCarta(new Cavaleiro(7,5));
-        mapa.addCarta(new Gigante(1,9));
-        mapa.addCarta(new Esqueleto(3,9));
-        mapa.addCarta(new EsqueletoBomba(5,9));
-        mapa.addCarta(new Mago(7,9));
+        mapa = new Mapa(evt, timer);
+        mao = new Mao(evt);
+
+        evt.setMapa(mapa);
+        evt.setMao(mao);
+
+        new Frame(mapa, mao);
     }
 }

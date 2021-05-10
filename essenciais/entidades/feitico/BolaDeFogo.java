@@ -1,11 +1,15 @@
-package essenciais.cartas.feitico;
+package essenciais.entidades.feitico;
+
+import frame.Mapa;
 
 import javax.swing.*;
 
+import javax.swing.Timer;
+
 public class BolaDeFogo extends Feitico {
 
-    public BolaDeFogo(int x, int y) {
-        super(x,y);
+    public BolaDeFogo(int x, int y, Timer t, Mapa m) {
+        super(x, y, t, m);
         this.custo = 4;
         this.dano = 325;
         this.raio = 1;
