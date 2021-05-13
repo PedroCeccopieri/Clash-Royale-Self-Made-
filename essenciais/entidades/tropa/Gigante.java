@@ -23,4 +23,16 @@ public class Gigante extends Tropa {
 
         this.sprite = new ImageIcon("./sprites/tropa/gigante64.png").getImage();
     }
+
+    protected void escolherAlvo() {
+
+        int[] tmp = m.torreInimigaMaisPerto(this.x, this.y, this.ladoDeSpawn);
+        if (tmp != null) {
+            this.destinoX = tmp[0];
+            this.destinoY = tmp[1];
+        } else {
+            this.destinoX = -1;
+            this.destinoY = -1;
+        }
+    }
 }

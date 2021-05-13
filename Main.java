@@ -17,7 +17,7 @@ public class Main {
     
     public static void main(String[] args) {
 
-        Timer timer = new Timer(1000, null);
+        Timer timer = new Timer(100, null);
         timer.start();
         
         EventHandler evt = new EventHandler(timer);
@@ -30,6 +30,8 @@ public class Main {
 
         evt.setMapa(mapa);
         evt.setMao(mao);
+
+        mapa.addCarta(new Cavaleiro(4,6,timer,mapa));
 
         new Frame(mapa, mao);
     }

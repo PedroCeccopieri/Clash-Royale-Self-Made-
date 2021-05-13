@@ -11,6 +11,7 @@ public class BolaDeFogo extends Feitico {
     public BolaDeFogo(int x, int y, Timer t, Mapa m) {
         super(x, y, t, m);
         this.custo = 4;
+        this.vida = 1;
         this.dano = 325;
         this.raio = 1;
 

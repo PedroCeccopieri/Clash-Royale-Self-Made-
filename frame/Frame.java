@@ -12,7 +12,7 @@ public class Frame extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(384,480);
         this.setLayout(new BorderLayout());
-        this.setResizable(true);
+        this.setResizable(false);
 
         this.add(mapa, BorderLayout.NORTH);
         this.add(maoDoJogador, BorderLayout.SOUTH);

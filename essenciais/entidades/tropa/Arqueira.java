@@ -14,7 +14,7 @@ public class Arqueira extends Tropa {
         this.custo = 3;
         this.vida = 120;
         this.dano = 40;
-        this.alcance = 4;
+        this.alcance = 3;
         this.velAtq = 1.2;
         this.velMov = 1.0;
 
