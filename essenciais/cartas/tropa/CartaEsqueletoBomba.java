@@ -8,6 +8,8 @@ public class CartaEsqueletoBomba extends Carta {
 
     public CartaEsqueletoBomba () {
 
+        this.custo = 2;
+
         this.sprite = new ImageIcon("./sprites/cartas/esqueletoBomba.png").getImage();
     }
 }

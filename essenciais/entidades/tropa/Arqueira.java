@@ -3,15 +3,13 @@ package essenciais.entidades.tropa;
 import frame.Mapa;
 
 import javax.swing.ImageIcon;
-
 import javax.swing.Timer;
 
 public class Arqueira extends Tropa {
 
-    public Arqueira (int x, int y, Timer t, Mapa m) {
-        super(x, y, t, m);
+    public Arqueira (int x, int y, int l, Timer t, Mapa m) {
+        super(x, y, l, t, m);
 
-        this.custo = 3;
         this.vida = 120;
         this.dano = 40;
         this.alcance = 3;

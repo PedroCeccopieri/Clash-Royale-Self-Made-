@@ -8,9 +8,9 @@ import javax.swing.Timer;
 
 public class XBesta extends Construcao {
 
-    public XBesta(int x, int y, Timer t, Mapa m) {
-        super(x, y, t, m);
-        this.custo = 6;
+    public XBesta(int x, int y, int l, Timer t, Mapa m) {
+        super(x, y, l, t, m);
+        
         this.vida = 1000;
         this.dano = 25;
         this.alcance = 4;

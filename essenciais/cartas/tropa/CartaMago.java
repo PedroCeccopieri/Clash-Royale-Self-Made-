@@ -8,6 +8,8 @@ public class CartaMago extends Carta {
 
     public CartaMago () {
 
+        this.custo = 5;
+
         this.sprite = new ImageIcon("./sprites/cartas/mago.png").getImage();
     }
 }

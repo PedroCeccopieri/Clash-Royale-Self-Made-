@@ -24,15 +24,16 @@ public class Main {
 
         Mapa mapa;
         Mao mao;
+        Computador comp;
 
         mapa = new Mapa(evt, timer);
-        mao = new Mao(evt);
+        mao = new Mao(evt, -1); // mao do jogador //
+        comp = new Computador(timer, mapa);
 
         evt.setMapa(mapa);
         evt.setMao(mao);
+        evt.setComp(comp);
 
-        mapa.addCarta(new Cavaleiro(4,6,timer,mapa));
-
-        new Frame(mapa, mao);
+        new Menu(new Frame(mapa, mao));
     }
 }

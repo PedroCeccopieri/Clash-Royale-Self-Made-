@@ -15,31 +15,40 @@ import essenciais.cartas.Carta;
 
 public class Mao extends JPanel {
 
-    EventHandler evt;
+    private EventHandler evt;
+    public int ladoDeSpawn;
+    public int elixir;
 
-    ArrayList<Carta> cartas = new ArrayList<Carta>(4);
-    ArrayList<Point> posDaMao = new ArrayList<Point>(4);
-    ArrayList<Boolean> posCartasNaMao = new ArrayList<Boolean>(4);
+    private JLabel nElixir;
 
-    Carta selecionada = null;
-    Image selecao = new ImageIcon("./sprites/cartas/selecionada.png").getImage();
+    private ArrayList<Carta> cartas = new ArrayList<Carta>(4);
+    private ArrayList<Point> posDaMao = new ArrayList<Point>(4);
+    private ArrayList<Boolean> posCartasNaMao = new ArrayList<Boolean>(4);
 
-    Point pointClicked;
+    private Carta selecionada = null;
+    private Image selecao = new ImageIcon("./sprites/cartas/selecionada.png").getImage();
 
-    Random rand = new Random();
+    private Point pointClicked;
+
+    private Random rand = new Random();
     
-    public Mao(EventHandler evt) {
+    public Mao(EventHandler evt, int ladoDeSpawn) {
 
         this.evt = evt;
-
-        inicializarMao();
+        this.ladoDeSpawn = ladoDeSpawn;
+        this.elixir = 50; 
 
         ClickListener clickListener = new ClickListener();
         this.addMouseListener(clickListener);
 
-        this.setPreferredSize(new Dimension(384,116));
-        this.setLayout(null);
+        this.setPreferredSize(new Dimension(384,136));
 
+        nElixir = new JLabel();
+        nElixir.setText("elixir: " + elixir);
+        this.add(nElixir);
+
+
+        inicializarMao();
         encherMao();
 
         this.setVisible(true);
@@ -59,10 +68,10 @@ public class Mao extends JPanel {
     }
 
     private void inicializarMao() {
-        posDaMao.add(new Point(0,0));
-        posDaMao.add(new Point(96,0));
-        posDaMao.add(new Point(192,0));
-        posDaMao.add(new Point(288,0));
+        posDaMao.add(new Point(0,20));
+        posDaMao.add(new Point(96,20));
+        posDaMao.add(new Point(192,20));
+        posDaMao.add(new Point(288,20));
 
         for (int i = 0; i < 4; i++) posCartasNaMao.add(false);
 
@@ -77,6 +86,11 @@ public class Mao extends JPanel {
                 aux = c;
             }
         } return aux;
+    }
+
+    public void atualizarElixir(int n) {
+        this.elixir -= n - 2;
+        nElixir.setText("elixir: " + elixir);
     }
 
     public void excluirCarta(Carta e) {
@@ -140,12 +154,12 @@ public class Mao extends JPanel {
                         case 5:
                             if (!temNaMao(5)) this.addCarta(new CartaEsqueletoBomba());
                             break;
-                        /*case 6:
+                        case 6:
                             if (!temNaMao(6)) this.addCarta(new CartaBolaDeFogo());
                             break;
                         case 7:
                             if (!temNaMao(7)) this.addCarta(new CartaXBesta());
-                            break;*/
+                            break;
                     }
                 }
             }

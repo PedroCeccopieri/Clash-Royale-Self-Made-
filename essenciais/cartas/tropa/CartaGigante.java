@@ -8,6 +8,8 @@ public class CartaGigante extends Carta {
 
     public CartaGigante () {
 
+        this.custo = 5;
+
         this.sprite = new ImageIcon("./sprites/cartas/gigante.png").getImage();
     }
 }

@@ -4,30 +4,24 @@ import frame.Mapa;
 
 import essenciais.entidades.Entidade;
 
-import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.Timer;
+
 import java.lang.Math;
 
 import java.util.ArrayList;
 
 public abstract class Tropa extends Entidade implements ActionListener {
 
-    Timer t;
-    
-    int ticks = 1000;
-    
     protected int alcance;
     protected double velAtq, velMov;
 
-    int destinoX = -1, destinoY = -1;
+    protected int destinoX = -1;
+    protected int destinoY = -1;
 
-    public Tropa(int x, int y, Timer t, Mapa m) {
-        super(x, y, t, m);
-
-        this.t = t;
-
-        t.addActionListener(this);
+    public Tropa(int x, int y, int l, Timer t, Mapa m) {
+        super(x, y, l, t, m);
     }
 
     private int lowerBound(int n) {
@@ -35,12 +29,8 @@ public abstract class Tropa extends Entidade implements ActionListener {
         else return n;
     }
 
-    private double getDist(int x1, int y1, int x2, int y2) {
+    protected double getDist(int x1, int y1, int x2, int y2) {
         return Math.sqrt(((x1-x2)*(x1-x2)) + ((y1-y2)*(y1-y2)));
-    }
-
-    public void morrer() {
-        t.removeActionListener(this);
     }
 
     private void irPara(int x, int y) {
@@ -114,7 +104,7 @@ public abstract class Tropa extends Entidade implements ActionListener {
         }
     }
 
-    private void atacarAlvo() {
+    protected void atacarAlvo() {
         if (this.ticks >= 1000 * this.velAtq) {
             if (m.isTorre(this.destinoX, this.destinoY)) {
                 m.getTorre(this.destinoX, this.destinoY).tomarDano(this.dano);
@@ -134,14 +124,12 @@ public abstract class Tropa extends Entidade implements ActionListener {
         if (this.ticks >= lowerBound((int) (1000 / this.velMov))) {
 
             if (this.destinoX != -1 && this.destinoY != -1) {
-                if (getDist(this.x, this.y, this.destinoX, this.destinoY) <= this.alcance) {
+                if ((int) getDist(this.x, this.y, this.destinoX, this.destinoY) <= this.alcance) {
                     atacarAlvo();
+                } else {
+                    irPara(this.destinoX, this.destinoY);
+                    this.ticks = 0;
                 }
-            }
-
-            if (this.destinoX != -1 && this.destinoY != -1) {
-                irPara(this.destinoX, this.destinoY);
-                this.ticks = 0;
             }
         } this.ticks += 100;
     } 

@@ -8,6 +8,8 @@ public class CartaArqueira extends Carta {
 
     public CartaArqueira () {
 
+        this.custo = 3;
+
         this.sprite = new ImageIcon("./sprites/cartas/arqueira.png").getImage();
     }
 }

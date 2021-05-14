@@ -1,8 +1,10 @@
 package frame;
 
 import java.awt.*;
+import java.awt.event.*;
 
 import javax.swing.*;
+import javax.swing.Timer;
 
 public class Frame extends JFrame {
     
@@ -19,6 +21,6 @@ public class Frame extends JFrame {
 
         this.pack();
         this.setLocationRelativeTo(null);
-        this.setVisible(true);
+        this.setVisible(false);
     }
 }

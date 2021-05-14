@@ -2,6 +2,7 @@ package frame;
 
 import essenciais.Peca;
 import essenciais.entidades.Entidade;
+import essenciais.entidades.feitico.Feitico;
 import essenciais.ambiente.*;
 
 import java.awt.*;
@@ -11,7 +12,6 @@ import java.awt.event.*;
 import javax.swing.event.MouseInputAdapter;
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class Mapa extends JPanel implements ActionListener {
 
@@ -151,7 +151,7 @@ public class Mapa extends JPanel implements ActionListener {
         ArrayList<Entidade> entidades = new ArrayList<Entidade>();
         
         for (int i = (this.HIGHT * this.WIDTH); i < tabuleiro.size(); i++) {
-            if (tabuleiro.get(i) != a && !((tabuleiro.get(i) instanceof Torre) || (tabuleiro.get(i) instanceof Chao) || (tabuleiro.get(i) instanceof Ponte) || (tabuleiro.get(i) instanceof Rio))) {
+            if (tabuleiro.get(i) != a && !((tabuleiro.get(i) instanceof Torre) || (tabuleiro.get(i) instanceof Chao) || (tabuleiro.get(i) instanceof Ponte) || (tabuleiro.get(i) instanceof Rio) || (tabuleiro.get(i) instanceof Feitico))) {
                 Entidade e = (Entidade) tabuleiro.get(i);
                 if ((a.getX() - n) <= e.getX() && e.getX() <= (a.getX() + n) && (a.getY() - n) <= e.getY() && e.getY() <= (a.getY() + n) && a.ladoDeSpawn != e.ladoDeSpawn) {
                     entidades.add(e);
@@ -183,7 +183,38 @@ public class Mapa extends JPanel implements ActionListener {
         return this.PONTES.get(ponteEscolida);
     }
 
-    
+    public void gameOver() {
+
+        boolean t1 = false;
+        boolean t2 = false;
+
+        for (int i = (this.HIGHT * this.WIDTH); i < tabuleiro.size() && (tabuleiro.get(i) instanceof Torre); i++) {
+            if (this.CORDSTORRES[1][0] == tabuleiro.get(i).getX() && this.CORDSTORRES[1][1] == tabuleiro.get(i).getY()) {
+                t1 = true;
+                break;
+            }
+        }
+
+        for (int i = (this.HIGHT * this.WIDTH); i < tabuleiro.size() && (tabuleiro.get(i) instanceof Torre); i++) {
+            if (this.CORDSTORRES[4][0] == tabuleiro.get(i).getX() && this.CORDSTORRES[4][1] == tabuleiro.get(i).getY()) {
+                t2 = true;
+                break;
+            }
+        }
+
+        if (t1 && !t2) {
+            new Fim(0);
+            Placar p = new Placar(0);
+            p.write();
+        }
+        if (!t1 && t2) {
+            new Fim(1);
+            Placar p = new Placar(1);
+            p.write();
+        }
+        if (!(t1 && t2)) this.timer.removeActionListener(this);
+    }
+
     public void paint (Graphics g) {
     	super.paint(g);
         for (int i = 0; i < tabuleiro.size(); i++) {
@@ -192,6 +223,7 @@ public class Mapa extends JPanel implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
+        gameOver();
         verificarMortos();
         repaint();
     }
@@ -200,9 +232,15 @@ public class Mapa extends JPanel implements ActionListener {
 
     private class ClickListener extends MouseInputAdapter {
         public void mousePressed (MouseEvent e) {
-            if (e.getY() > 8 * 32) {
+
+            if (evt.cartaSelecionadaIsFeitico()) {
                 Peca p = evt.SpawnCarta(e.getPoint());
-                if (p != null) addCarta(p);
+                addCarta(p);
+            } else {
+               if (e.getY() > 8 * 32) {
+                   Peca p = evt.SpawnCarta(e.getPoint());
+                   if (p != null) addCarta(p);
+               }
             }
         }
     }

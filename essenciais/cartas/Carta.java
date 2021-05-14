@@ -7,6 +7,7 @@ public abstract class Carta {
 
     protected Image sprite;
     protected int x, y, w, h;
+    protected int custo;
 
     public Carta () {
 
@@ -30,6 +31,10 @@ public abstract class Carta {
 
     public int getH() {
         return this.h;
+    }
+
+    public int getCusto() {
+        return this.custo;
     }
 
     public void setpos(int x, int y) { 

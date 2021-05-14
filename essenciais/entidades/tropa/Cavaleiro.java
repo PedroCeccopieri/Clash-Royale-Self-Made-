@@ -7,10 +7,9 @@ import javax.swing.Timer;
 
 public class Cavaleiro extends Tropa {
 
-    public Cavaleiro (int x, int y, Timer t, Mapa m) {
-        super(x, y, t, m);
+    public Cavaleiro (int x, int y, int l, Timer t, Mapa m) {
+        super(x, y, l, t, m);
 
-        this.custo = 3;
         this.vida = 650;
         this.dano = 80;
         this.alcance = 1;
