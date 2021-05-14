@@ -68,12 +68,12 @@ public class Mapa extends JPanel implements ActionListener {
         }
     }
 
-    public void addCarta(Peca p) {
+    public void addCarta(Peca p) { // adiciona a carta no mapa //
         tabuleiro.add(p);
         repaint();
     }
 
-    private void verificarMortos() {
+    private void verificarMortos() { // remove do mapa todas as unidades com a vida < 0 //
         for (int i = (this.HIGHT * this.WIDTH); i < tabuleiro.size(); i++) {
             if (!((tabuleiro.get(i) instanceof Chao) || (tabuleiro.get(i) instanceof Ponte) || (tabuleiro.get(i) instanceof Rio))) {
                 if ((!(tabuleiro.get(i) instanceof Torre) && ((Entidade) tabuleiro.get(i)).getVida() <= 0) || ((tabuleiro.get(i) instanceof Torre) && ((Torre) tabuleiro.get(i)).getVida() <= 0)) {
@@ -85,12 +85,12 @@ public class Mapa extends JPanel implements ActionListener {
         }
     }
 
-    public boolean isTorre(int x, int y) {
+    public boolean isTorre(int x, int y) { // verifica se possui uma torre em (x,y) //
         if (getTorre(x,y) != null) return true;
         else return false;
     }
 
-    public Torre getTorre(int x, int y) {
+    public Torre getTorre(int x, int y) { // retorna a torre em (x,y) //
         
         int[] cord = {-1,-1};
 
@@ -106,7 +106,7 @@ public class Mapa extends JPanel implements ActionListener {
         } return null;
     }
 
-    public int[] torreInimigaMaisPerto(int x, int y, int ladoDeSpawn) {
+    public int[] torreInimigaMaisPerto(int x, int y, int ladoDeSpawn) { // retorna a torre inimiga mais perto de (x,y) //
 
         int[] torreEscolhida = null;
         double distancia = -1;
@@ -146,7 +146,7 @@ public class Mapa extends JPanel implements ActionListener {
         return torreEscolhida;
     }
 
-    public ArrayList<Entidade> entidadesNaArea(Entidade a, int n) {
+    public ArrayList<Entidade> entidadesNaArea(Entidade a, int n) { // retorna as entidades num raio de n a partir da posicao de a //
         
         ArrayList<Entidade> entidades = new ArrayList<Entidade>();
         
@@ -162,7 +162,7 @@ public class Mapa extends JPanel implements ActionListener {
         return entidades;
     }
 
-    public Entidade getEntidadeNoPonto(int x, int y) {
+    public Entidade getEntidadeNoPonto(int x, int y) { // retorna a entidade em (x,y) //
         for (int i = (this.HIGHT * this.WIDTH); i < tabuleiro.size(); i++) {
             if (!isTorre(x, y) && tabuleiro.get(i).getX() == x && tabuleiro.get(i).getY() == y) {
                 return (Entidade) tabuleiro.get(i);
@@ -170,7 +170,7 @@ public class Mapa extends JPanel implements ActionListener {
         } return null;
     }
 
-    public int ponteMaisPerto(int x) {
+    public int ponteMaisPerto(int x) { // retorna a posicao x da ponte mais perto da unidade //
 
         int distanciaAtual, ponteEscolida = 1;
         distanciaAtual = Math.abs(this.PONTES.get(0) - x);
@@ -183,7 +183,7 @@ public class Mapa extends JPanel implements ActionListener {
         return this.PONTES.get(ponteEscolida);
     }
 
-    public void gameOver() {
+    public void gameOver() { // verifica o final do jogo //
 
         boolean t1 = false;
         boolean t2 = false;

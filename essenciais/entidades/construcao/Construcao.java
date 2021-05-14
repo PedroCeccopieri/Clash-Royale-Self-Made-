@@ -26,7 +26,7 @@ public abstract class Construcao extends Entidade implements ActionListener {
         return Math.sqrt(((x1-x2)*(x1-x2)) + ((y1-y2)*(y1-y2)));
     }
 
-    private void escolherAlvo() {
+    private void escolherAlvo() { // escolhe o alvo mais proximo // 
 
         ArrayList<Entidade> entidades = m.entidadesNaArea(this, 3);
 
@@ -55,7 +55,7 @@ public abstract class Construcao extends Entidade implements ActionListener {
         }
     }
 
-    private void atacarAlvo() {
+    private void atacarAlvo() { // ataca o alvo escolhido //
         this.darDano(m.getEntidadeNoPonto(this.alvoX, this.alvoY));
     }
 

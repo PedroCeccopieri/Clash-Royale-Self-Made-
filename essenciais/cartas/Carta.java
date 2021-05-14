@@ -3,7 +3,7 @@ package essenciais.cartas;
 import javax.swing.ImageIcon;
 import java.awt.*;
 
-public abstract class Carta {
+public abstract class Carta { // ficam na mao e sao traduzida em Entidades pelo EventHandler //
 
     protected Image sprite;
     protected int x, y, w, h;

@@ -19,7 +19,7 @@ public abstract class Entidade extends Peca implements ActionListener {
     
     protected int vida, dano;
     
-    public Entidade(int x, int y, int l, Timer t, Mapa m) {
+    public Entidade(int x, int y, int l, Timer t, Mapa m) { // Pecas que ficam no mapa e interagem entre si e com as torres //
         this.m = m;
         this.t = t;
         

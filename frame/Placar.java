@@ -37,7 +37,7 @@ public class Placar extends JFrame {
         this.setVisible(false);
     }
 
-    public void read() {
+    public void read() { // le o arquivo do placar //
         File file = new File("./frame/placar.txt");
         Scanner scan = null;
         try {
@@ -52,7 +52,7 @@ public class Placar extends JFrame {
         }
     }
 
-    public void write() {
+    public void write() { // escreve no arquivo do placar //
 
         if (this.n == 0) this.j1 += 1;
         if (this.n == 1) this.j2 += 1;

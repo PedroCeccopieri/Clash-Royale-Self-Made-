@@ -21,12 +21,12 @@ public class Mao extends JPanel {
 
     private JLabel nElixir;
 
-    private ArrayList<Carta> cartas = new ArrayList<Carta>(4);
-    private ArrayList<Point> posDaMao = new ArrayList<Point>(4);
-    private ArrayList<Boolean> posCartasNaMao = new ArrayList<Boolean>(4);
+    private ArrayList<Carta> cartas = new ArrayList<Carta>(4);               //                  //
+    private ArrayList<Point> posDaMao = new ArrayList<Point>(4);            // Listas sincronas //
+    private ArrayList<Boolean> posCartasNaMao = new ArrayList<Boolean>(4); //                  //
 
     private Carta selecionada = null;
-    private Image selecao = new ImageIcon("./sprites/cartas/selecionada.png").getImage();
+    private Image selecao = new ImageIcon("./sprites/cartas/selecionada.png").getImage(); // borda da carta selecionada //
 
     private Point pointClicked;
 
@@ -54,7 +54,7 @@ public class Mao extends JPanel {
         this.setVisible(true);
     }
 
-    private void addCarta(Carta c) {
+    private void addCarta(Carta c) { // adiciona a carta na mao em um lugar disponivel //
         for (boolean pos : posCartasNaMao) {
             if (!pos) {
                 int index = posCartasNaMao.indexOf(pos);
@@ -67,7 +67,7 @@ public class Mao extends JPanel {
         }
     }
 
-    private void inicializarMao() {
+    private void inicializarMao() { // inicializa as posicoes possiveis para as cartas na mao //
         posDaMao.add(new Point(0,20));
         posDaMao.add(new Point(96,20));
         posDaMao.add(new Point(192,20));
@@ -78,7 +78,7 @@ public class Mao extends JPanel {
         for (int i = 0; i < 4; i++) cartas.add(null);
     }
 
-    private Carta whichCarta(int x, int y) {
+    private Carta whichCarta(int x, int y) { // retorna qual carta esta em (x,y) //
         Carta aux = null;
         for (int i = 0; i < cartas.size(); i++) {
             Carta c = cartas.get(i);
@@ -93,7 +93,7 @@ public class Mao extends JPanel {
         nElixir.setText("elixir: " + elixir);
     }
 
-    public void excluirCarta(Carta e) {
+    public void excluirCarta(Carta e) { // remove a carta da mao //
         for (Carta c : cartas) {
             if (e == c) {
                 int index = cartas.indexOf(e);
@@ -110,7 +110,7 @@ public class Mao extends JPanel {
         repaint();
     }
 
-    private boolean temNaMao(int n) {
+    private boolean temNaMao(int n) { // verifica repeticao de cartas na mao //
 
         int carta = -1;
         for (Carta c : cartas) {
@@ -127,7 +127,7 @@ public class Mao extends JPanel {
         } return false;
     }
 
-    private void encherMao() {
+    private void encherMao() { // enche a mao de cartas //
 
         while (!(posCartasNaMao.get(0) && posCartasNaMao.get(1) && posCartasNaMao.get(2) && posCartasNaMao.get(3))) {
 

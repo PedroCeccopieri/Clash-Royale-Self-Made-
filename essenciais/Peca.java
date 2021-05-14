@@ -9,7 +9,7 @@ public abstract class Peca {
     protected Image sprite;
 
 
-    public Peca() {
+    public Peca() { // classe mais geral //
         
     }
 

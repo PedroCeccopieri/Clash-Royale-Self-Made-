@@ -29,12 +29,12 @@ public class Menu extends JFrame implements ActionListener {
         this.setLayout(new FlowLayout());
         this.setResizable(false);
         
-        
+        // criando os botoes //
         this.ok = new JButton("jogar");
         this.sobre = new JButton("sobre");
         this.pontuacao = new JButton("pontuacao");
         this.cancelar = new JButton("sair");
-
+        // adicionando o listener //
         this.ok.addActionListener(this);
         this.sobre.addActionListener(this);
         this.pontuacao.addActionListener(this);
@@ -49,7 +49,7 @@ public class Menu extends JFrame implements ActionListener {
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
-
+    // funcao dos botoes //
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == ok) {
             f.setVisible(true);

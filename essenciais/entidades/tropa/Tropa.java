@@ -33,7 +33,7 @@ public abstract class Tropa extends Entidade implements ActionListener {
         return Math.sqrt(((x1-x2)*(x1-x2)) + ((y1-y2)*(y1-y2)));
     }
 
-    private void irPara(int x, int y) {
+    private void irPara(int x, int y) { // move 1 de distancia em direcao a (x,y) //
 
         int prox = this.x, proy = this.y;
 
@@ -68,7 +68,7 @@ public abstract class Tropa extends Entidade implements ActionListener {
         this.y = proy;
     }
 
-    protected void escolherAlvo() {
+    protected void escolherAlvo() { // escolhe o alvo mais proximo //
 
         ArrayList<Entidade> entidades = m.entidadesNaArea(this, 3);
 
@@ -104,7 +104,7 @@ public abstract class Tropa extends Entidade implements ActionListener {
         }
     }
 
-    protected void atacarAlvo() {
+    protected void atacarAlvo() { // ataca o alvo se estiver no alcance //
         if (this.ticks >= 1000 * this.velAtq) {
             if (m.isTorre(this.destinoX, this.destinoY)) {
                 m.getTorre(this.destinoX, this.destinoY).tomarDano(this.dano);

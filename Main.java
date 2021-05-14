@@ -17,7 +17,7 @@ public class Main {
     
     public static void main(String[] args) {
 
-        Timer timer = new Timer(100, null);
+        Timer timer = new Timer(100, null); // cria o timer do jogo //
         timer.start();
         
         EventHandler evt = new EventHandler(timer);
@@ -28,12 +28,12 @@ public class Main {
 
         mapa = new Mapa(evt, timer);
         mao = new Mao(evt, -1); // mao do jogador //
-        comp = new Computador(timer, mapa);
+        comp = new Computador(timer, mapa); // adversario do jogador //
 
         evt.setMapa(mapa);
         evt.setMao(mao);
         evt.setComp(comp);
 
-        new Menu(new Frame(mapa, mao));
+        new Menu(new Frame(mapa, mao)); // inicia o menu //
     }
 }

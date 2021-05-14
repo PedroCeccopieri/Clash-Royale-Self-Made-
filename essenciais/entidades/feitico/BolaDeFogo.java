@@ -21,7 +21,7 @@ public class BolaDeFogo extends Feitico {
         this.sprite = new ImageIcon("./sprites/feitico/boladefogo56.png").getImage();
     }
 
-    protected void explodir() {
+    protected void explodir() { // causa dano em area //
 
         for (int x = (this.x - raio); x < (this.x + raio); x++) {
             for (int y = (this.y - raio); y < (this.y + raio); y++) {
