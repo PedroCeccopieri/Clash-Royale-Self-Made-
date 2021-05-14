@@ -43,7 +43,7 @@ public class EventHandler {
         this.comp = c;
     }
 
-    public Peca SpawnCarta(Point p) {
+    public Peca SpawnCarta(Point p) { // traduz as classes Cartas em Entidades, bota a Entidades no mapa e tira a Carta da mao //
 
         Peca c = null;
 
